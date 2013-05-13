@@ -1,6 +1,18 @@
 class AuthorsController < ApplicationController
+
+  before_filter :zero_authors_or_authenticated, only: [:new, :create]
+  before_filter :require_login, except: [:new, :create]
+  
   # GET /authors
   # GET /authors.json
+
+  def zero_authors_or_authenticated
+    unless Author.count == 0 || current_user
+      redirect_to root_path
+      return false
+    end
+  end
+
   def index
     @authors = Author.all
 
