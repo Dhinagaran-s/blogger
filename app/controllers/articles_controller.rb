@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
 
   before_filter :require_login, except: [ :index, :show ]
+  before_filter :check_owner, only: [ :edit, :destroy ]
 
+  def check_owner
+    current_user == Article.find(params[:id]).author
+  end
   def index
     @articles = Article.all
   end

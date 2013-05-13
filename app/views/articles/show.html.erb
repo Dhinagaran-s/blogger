@@ -1,4 +1,5 @@
 <h1><%= @article.title %></h1>
+<h2>Article by: <%= @article.author.username %></author>
 <p>
   Tags:
   <% @article.tags.each do |tag| %>
@@ -8,7 +9,7 @@
 <p><%= image_tag @article.image.url %></p>
 <p><%= @article.body %></p>
 
-<% if logged_in? %>
+<% if @article.author = current_user %>
   <%= link_to "edit", edit_article_path(@article) %>
   <%= link_to "delete", article_path(@article), method: :delete, confirm: "Really delete the article '#{@article.title}'?" %>
 <% end %>
