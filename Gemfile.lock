@@ -65,6 +65,7 @@ GEM
     mime-types (1.23)
     multi_json (1.7.3)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.2.96)
     oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -139,6 +140,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
+  newrelic_rpm
   paperclip
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)

@@ -39,3 +39,4 @@ gem 'jquery-rails'
 
 gem 'paperclip'
 gem 'sorcery'
+gem 'newrelic_rpm'

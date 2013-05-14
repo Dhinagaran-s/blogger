@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
 
   before_filter :require_login, except: [ :index, :show ]
-  before_filter :check_owner, only: [ :edit, :destroy ]
+  before_filter :check_owner, only: [ :edit, :update, :destroy ]
 
   def check_owner
-    current_user == Article.find(params[:id]).author
+    redirect_to article_path unless current_user == Article.find(params[:id]).author
   end
   def index
     @articles = Article.all
@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
   end
   def create
     @article = Article.new(params[:article])
+    @article.author_id = current_user.id
     @article.save
     flash.notice = "Article '#{@article.title}' Created!"
     redirect_to article_path(@article)

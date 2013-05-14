@@ -10,7 +10,7 @@
   <%= @author.email %>
 </p>
 
-<p>
+<!-- <p>
   <b>Password:</b>
   <%= @author.password %>
 </p>
@@ -18,8 +18,17 @@
 <p>
   <b>Password confirmation:</b>
   <%= @author.password_confirmation %>
-</p>
-
+</p> -->
 
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', authors_path %>
+
+<br><br>
+<p>
+  <b>Articles by <%= @author.username%>:</b>
+  <ul>
+  <% @author.articles.each do |article| %>
+    <li><%= link_to article.title, article_path(article) %></li>
+  <% end %>
+  </ul>
+</p>
